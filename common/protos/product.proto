@@ -59,9 +59,13 @@ message UpdateProductDto {
   optional int32 quantity = 7;
 }
 
-message OrderRequestDto {
+message OrderItemRequestDto {
   string product_id = 1;
   int32 quantity = 2;
+}
+
+message OrderRequestDto {
+  repeated OrderItemRequestDto items = 1;
 }
 
 message Product {

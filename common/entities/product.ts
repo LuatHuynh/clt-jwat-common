@@ -54,9 +54,13 @@ export interface UpdateProductDto {
   quantity?: number | undefined;
 }
 
-export interface OrderRequestDto {
+export interface OrderItemRequestDto {
   productId: string;
   quantity: number;
+}
+
+export interface OrderRequestDto {
+  items: OrderItemRequestDto[];
 }
 
 export interface Product {
