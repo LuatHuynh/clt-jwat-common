@@ -105,7 +105,7 @@ export interface ProductServiceClient {
 
   updateProduct(request: UpdateProductDto): Observable<ProductResponseMessage>;
 
-  orderRequest(request: OrderRequestDto): Observable<ProductResponseMessage>;
+  orderRequest(request: OrderRequestDto): Observable<ProductsResponseMessage>;
 
   removeProduct(
     request: FindProductByIdDto,
@@ -144,9 +144,9 @@ export interface ProductServiceController {
   orderRequest(
     request: OrderRequestDto,
   ):
-    | Promise<ProductResponseMessage>
-    | Observable<ProductResponseMessage>
-    | ProductResponseMessage;
+    | Promise<ProductsResponseMessage>
+    | Observable<ProductsResponseMessage>
+    | ProductsResponseMessage;
 
   removeProduct(
     request: FindProductByIdDto,

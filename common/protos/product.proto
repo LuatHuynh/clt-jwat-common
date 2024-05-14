@@ -9,7 +9,7 @@ service ProductService {
   rpc FindProductById (FindProductByIdDto) returns (ProductResponseMessage) {}
   rpc CreateProduct (CreateProductDto) returns (ProductResponseMessage) {}
   rpc UpdateProduct (UpdateProductDto) returns (ProductResponseMessage) {}
-  rpc OrderRequest (OrderRequestDto) returns (ProductResponseMessage) {}
+  rpc OrderRequest (OrderRequestDto) returns (ProductsResponseMessage) {}
   rpc RemoveProduct (FindProductByIdDto) returns (ProductResponseMessage) {}
 }
 
