@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package films;
+
+import "google/protobuf/timestamp.proto";
+// import "google/protobuf/empty.proto";
+
+service FilmsService {
+  rpc FindOne (FilmById) returns (FilmResponse) {}
+  rpc FindAllFilms (SearchQuery) returns (ListFilmResponse) {}
+  rpc CreateFilm (CreateFilmRequest) returns (FilmResponse) {}
+  rpc UpdateFilm (UpdateFilmRequest) returns (FilmResponse) {}
+  rpc DeleteFilm (FilmById) returns (FilmResponse) {}
+}
+
+message FilmResponse {
+  optional Film data = 1;
+  optional string message = 2;
+  optional int32 code = 3;
+}
+
+message ListFilmResponse {
+  repeated Film data = 1;
+  optional string message = 2;
+  optional int32 code = 3;
+}
+
+message FilmById {
+  string id = 1;
+}
+
+message SearchQuery {
+  optional string key = 1;
+}
+
+message CreateFilmRequest {
+  string title = 1;
+  optional string description = 2;
+  optional int32 order = 3;
+  optional string director = 4;
+  optional int32 duration = 5;
+  optional string thumbnail = 6;
+  optional string path = 7;
+  optional google.protobuf.Timestamp released_date = 8;
+}
+
+message UpdateFilmRequest {
+  string id = 1;
+  optional string title = 2;
+  optional string description = 3;
+  optional int32 order = 4;
+  optional string director = 5;
+  optional int32 duration = 6;
+  optional string thumbnail = 7;
+  optional string path = 8;
+  optional google.protobuf.Timestamp released_date = 9;
+}
+
+message Films {
+  repeated Film films = 1;
+}
+
+message Film {
+  string filmId = 1;
+  string title = 2;
+  string description = 3;
+  bool status = 4;
+  int32 view = 5;
+  int32 order = 6;
+  string thumbnail = 7;
+  string path = 8;
+  string director = 9;
+  int32 duration = 10;
+  google.protobuf.Timestamp released_date = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp modified_at = 13;
+  google.protobuf.Timestamp deleted_at = 14;
+}
