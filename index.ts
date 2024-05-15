@@ -5,3 +5,4 @@ export * from './common/entities/film';
 export * from './common/entities/teacher';
 export * from './common/entities/company';
 export * from './common/entities/book';
+export * from './common/entities/article';
