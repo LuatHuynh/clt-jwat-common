@@ -6,3 +6,4 @@ export * from './common/entities/teacher';
 export * from './common/entities/company';
 export * from './common/entities/book';
 export * from './common/entities/article';
+export * from './common/entities/category'

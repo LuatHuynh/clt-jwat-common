@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package category;
+
+service CategoryService {
+  rpc GetCategory(GetCategoryRequest) returns (GetCategoryResponse) {}
+  rpc GetCategoryById(GetCategoryByIdRequest) returns (GetCategoryByIdResponse) {}
+  rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse) {}
+  rpc UpdateCategory(UpdateCategoryRequest) returns (UpdateCategoryResponse) {}
+  rpc RemoveCategory (RemoveCategoryRequest) returns (RemoveCategoryResponse);
+}
+
+message GetCategoryRequest {
+  int32 id = 1;
+  string code = 2;
+  string name = 3;
+  string link = 4;
+  int32 parent_id = 5;
+}
+message GetCategoryByIdRequest {
+  int32 id = 1;
+}
+message GetCategoryByIdResponse {
+  int32 id = 1;
+  string code = 2;
+  string name = 3;
+  string link = 4;
+  int32 parent_id = 5;
+}
+message GetCategoryResponse {
+  repeated Category categories = 1;
+}
+
+message CreateCategoryRequest {
+  string code = 2;
+  string name = 3;
+  string link = 4;
+  int32 parent_id = 5;
+}
+
+message CreateCategoryResponse {
+  int32 id = 1;
+  string code = 2;
+  string name = 3;
+  string link = 4;
+  int32 parent_id = 5;
+}
+
+message Category {
+  int32 id = 1;
+  string code = 2;
+  string name = 3;
+  string link = 4;
+  int32 parent_id = 5;
+}
+message UpdateCategoryRequest {
+  int32 id = 1;
+  string code = 2;
+  string name = 3;
+  string link = 4;
+  int32 parent_id = 5;
+}
+message UpdateCategoryResponse {
+  int32 id = 1;
+  string code = 2;
+  string name = 3;
+  string link = 4;
+  int32 parent_id = 5;
+}
+message RemoveCategoryRequest {
+  int32 id = 1;
+}
+message RemoveCategoryResponse {
+  int32 id = 1;
+}
