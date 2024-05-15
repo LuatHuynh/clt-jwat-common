@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package company;
+
+service CompanyService {
+    rpc findAll(FindAllCompanyDto) returns (FindAllCompanyResponse) {}
+    rpc findOneById(FindCompanyDto) returns (FindCompanyByIdResponse) {}
+    rpc create(CreateCompanyDto) returns (FindCompanyByIdResponse) {}
+    rpc update(UpdateCompanyDto) returns (FindCompanyByIdResponse) {}
+    rpc delete(FindCompanyDto) returns (FindCompanyByIdResponse) {}
+}
+
+message Company {
+    string companyId = 1;
+    string name = 2;
+    string email = 3;
+    string address = 4;
+    string phoneNumber = 5;
+    google.protobuf.Timestamp createdAt = 6;
+    optional google.protobuf.Timestamp deletedAt = 7;
+    google.protobuf.Timestamp updatedAt = 8;
+}
+
+message FindAllCompanyResponse {
+    int32 status = 1;
+    repeated string message = 2;
+    repeated Company companies = 3;
+}
+
+message FindCompanyByIdResponse {
+    int32 status = 1;
+    repeated string message = 2;
+    optional Company companies = 3;
+}
+
+message FindCompanyDto {
+    string companyId = 1;
+}
+
+message FindAllCompanyDto {
+    optional string name = 1;
+    optional string email = 2;
+}
+
+message AllCompany {
+    repeated Company companies = 1;
+}
+
+message CreateCompanyDto {
+    string name = 1;
+    string email = 2;
+    string address = 3;
+    string phoneNumber = 4;
+}
+
+message UpdateCompanyDto {
+    string companyId = 1;
+    optional string name = 2;
+    optional string email = 3;
+    optional string address = 4;
+    optional string phoneNumber = 5;
+}
+
+message Empty {
+}
