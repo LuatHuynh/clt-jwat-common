@@ -7,9 +7,6 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-
-export const protobufPackage = "category";
-
 export interface GetCategoryRequest {
   id?: number | undefined;
   code?: string | undefined;
