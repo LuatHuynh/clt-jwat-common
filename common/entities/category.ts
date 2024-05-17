@@ -8,24 +8,18 @@
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 
+export const protobufPackage = "category";
+
 export interface GetCategoryRequest {
-  id: number;
-  code: string;
-  name: string;
-  link: string;
-  parentId: number;
+  id?: number | undefined;
+  code?: string | undefined;
+  name?: string | undefined;
+  link?: string | undefined;
+  parentId?: number | undefined;
 }
 
 export interface GetCategoryByIdRequest {
   id: number;
-}
-
-export interface GetCategoryByIdResponse {
-  id: number;
-  code: string;
-  name: string;
-  link: string;
-  parentId: number;
 }
 
 export interface GetCategoryResponse {
@@ -36,39 +30,23 @@ export interface CreateCategoryRequest {
   code: string;
   name: string;
   link: string;
-  parentId: number;
-}
-
-export interface CreateCategoryResponse {
-  id: number;
-  code: string;
-  name: string;
-  link: string;
-  parentId: number;
+  parentId?: number | undefined;
 }
 
 export interface Category {
   id: number;
   code: string;
   name: string;
-  link: string;
-  parentId: number;
+  link?: string | undefined;
+  parentId?: number | undefined;
 }
 
 export interface UpdateCategoryRequest {
   id: number;
   code: string;
   name: string;
-  link: string;
-  parentId: number;
-}
-
-export interface UpdateCategoryResponse {
-  id: number;
-  code: string;
-  name: string;
-  link: string;
-  parentId: number;
+  link?: string | undefined;
+  parentId?: number | undefined;
 }
 
 export interface RemoveCategoryRequest {
@@ -84,11 +62,11 @@ export const CATEGORY_PACKAGE_NAME = "category";
 export interface CategoryServiceClient {
   getCategory(request: GetCategoryRequest): Observable<GetCategoryResponse>;
 
-  getCategoryById(request: GetCategoryByIdRequest): Observable<GetCategoryByIdResponse>;
+  getCategoryById(request: GetCategoryByIdRequest): Observable<Category>;
 
-  createCategory(request: CreateCategoryRequest): Observable<CreateCategoryResponse>;
+  createCategory(request: CreateCategoryRequest): Observable<Category>;
 
-  updateCategory(request: UpdateCategoryRequest): Observable<UpdateCategoryResponse>;
+  updateCategory(request: UpdateCategoryRequest): Observable<Category>;
 
   removeCategory(request: RemoveCategoryRequest): Observable<RemoveCategoryResponse>;
 }
@@ -98,17 +76,11 @@ export interface CategoryServiceController {
     request: GetCategoryRequest,
   ): Promise<GetCategoryResponse> | Observable<GetCategoryResponse> | GetCategoryResponse;
 
-  getCategoryById(
-    request: GetCategoryByIdRequest,
-  ): Promise<GetCategoryByIdResponse> | Observable<GetCategoryByIdResponse> | GetCategoryByIdResponse;
+  getCategoryById(request: GetCategoryByIdRequest): Promise<Category> | Observable<Category> | Category;
 
-  createCategory(
-    request: CreateCategoryRequest,
-  ): Promise<CreateCategoryResponse> | Observable<CreateCategoryResponse> | CreateCategoryResponse;
+  createCategory(request: CreateCategoryRequest): Promise<Category> | Observable<Category> | Category;
 
-  updateCategory(
-    request: UpdateCategoryRequest,
-  ): Promise<UpdateCategoryResponse> | Observable<UpdateCategoryResponse> | UpdateCategoryResponse;
+  updateCategory(request: UpdateCategoryRequest): Promise<Category> | Observable<Category> | Category;
 
   removeCategory(
     request: RemoveCategoryRequest,
